@@ -1,0 +1,94 @@
+/*
+  ANIMATED TEXT GRADIENT
+  --------------------------------------------------------------
+  I don't understand what this does
+  I stole it from here: https://codepen.io/argyleink/pen/vEBmZNw
+*/
+
+@property --＠color-1 {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: hsl(165, 76%, 50%);
+}
+
+@property --＠color-2 {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: hsl(204 100% 59%);
+}
+
+@keyframes gradient-change {
+  to {
+    --＠color-1: hsl(210 100% 59%);
+    --＠color-2: hsl(310 100% 59%);
+  }
+}
+
+.gradient-text {
+  animation: gradient-change 2s linear infinite alternate;
+  background: linear-gradient(
+    to right in oklch,
+    var(--＠color-1),
+    var(--＠color-2)
+  );
+
+  background-clip: text;
+  color: transparent;
+}
+
+/* ----------------------------------------------------------- */
+
+.set-text-color {
+  color: #e87cb4;
+}
+
+.icon-square {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 0.75rem;
+}
+
+body {
+  background-color: rgb(10, 10, 10);
+}
+
+.justify-paragraph {
+  text-align: justify;
+}
+
+a {
+  text-decoration: inherit;
+  color: #e87cb4;
+}
+
+.footer-box {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.discord {
+  display: flex;
+  gap: 10px;
+  align-content: center;
+}
+
+.credits {
+  display: flex;
+}
+
+.credits > a {
+  text-decoration: inherit;
+  color: inherit;
+}
+
+#freepik {
+  width: 80px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+#flaticon {
+  width: 80px;
+  margin-left: 5px;
+}
