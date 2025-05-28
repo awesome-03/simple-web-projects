@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/styles.css" />
+    <title>LyricFindr</title>
+  </head>
+  <body>
+    <div class="search">
+      <h1>Find Lyrics Now!</h1>
+      <form action="/" method="POST">
+        <div>
+          <label for="songName">Song name:</label>
+          <input type="text" id="songName" name="songName" />
+        </div>
+
+        <div>
+          <label for="artistName">Artist name:</label>
+          <input type="text" id="artistName" name="artistName" />
+        </div>
+
+        <input type="submit" value="Find Song" />
+      </form>
+    </div>
+
+    <% if (locals.songLyrics) { %>
+      <div class="lyrics">
+        <pre><%= songLyrics %></pre>
+      </div>
+    <% } %>
+  </body>
+</html>
