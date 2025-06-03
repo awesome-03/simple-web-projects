@@ -1,0 +1,53 @@
+<%- include("partials/header.ejs"); -%>
+
+<h1>Books I Have Read</h1>
+
+<div id="sorters">
+  <form id="sort-form" method="GET" action="/">
+    <label for="sort">Sort by:</label>
+    <select id="sort" name="sort">
+      <option value="date" <%= sort === "date" ? "selected" : "" %>>Date</option>
+      <option value="rating" <%= sort === "rating" ? "selected" : "" %>>Rating</option>
+      <option value="title" <%= sort === "title" ? "selected" : "" %>>Title</option>
+    </select>
+
+    <input type="hidden" name="order" id="order-input" value="<%= order === 'ASC' ? 'ASC' : 'DESC' %>">
+    <button type="submit" id="sort-order-toggle" data-order="<%= order === 'ASC' ? 'ASC' : 'DESC' %>">
+      <img
+        id="sort-order-img"
+        src="/images/<%= order === 'ASC' ? 'up-black.png' : 'down-black.png' %>"
+        alt="Sort Order Arrow"
+      />
+    </button>
+  </form>
+</div>
+
+<section id="book-entry-section">
+  <% if (locals.books && books.length > 0) { %>
+    <% books.forEach(book => { %>
+      <div class="book-entry">
+        <img src="<%= book.cover %>" alt="<%= book.title %> Cover Image">
+        <div>
+          <h2><%= book.title %></h2>
+          <h3><%= book.author %></h3>
+        </div>
+        <!-- <hr> -->
+        <div>
+          <h4>Rating: <%= book.rating %>/10</h4>
+          <h4>Date: <%= book.date.toLocaleDateString('en-GB') %></h4>
+          <h4>ISBN: <%= book.isbn %></h4>
+        </div>
+        <hr>
+        <p><%= book.comment %></p>
+      </div>
+    <% }); %>
+
+  <button id="add-btn" type="button">+</button>
+  <div id="new-book-form-container"></div>
+
+  <% } else { %>
+    <p>No books found.</p>
+  <% } %>
+</section>
+
+<%- include("partials/footer.ejs"); -%>
