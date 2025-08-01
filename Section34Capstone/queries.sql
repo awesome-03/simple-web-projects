@@ -18,7 +18,7 @@ CREATE TABLE entries(
 	author TEXT NOT NULL,
 	rating SMALLINT NOT NULL,
 	date DATE NOT NULL,
-  cover TEXT,
+    cover TEXT,
 	comment TEXT
 );
 

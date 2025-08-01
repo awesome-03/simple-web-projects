@@ -26,19 +26,24 @@
   <% if (locals.books && books.length > 0) { %>
     <% books.forEach(book => { %>
       <div class="book-entry">
-        <img src="<%= book.cover %>" alt="<%= book.title %> Cover Image">
-        <div>
-          <h2><%= book.title %></h2>
-          <h3><%= book.author %></h3>
+          <img src="<%= book.cover %>" alt="<%= book.title %> Cover Image">
+          <div>
+            <h2><%= book.title %></h2>
+            <h3><%= book.author %></h3>
+          </div>
+          <!-- <hr> -->
+          <div>
+            <h4>Rating: <%= book.rating %>/10</h4>
+            <h4>Date: <%= book.date.toLocaleDateString('en-GB') %></h4>
+            <h4>ISBN: <%= book.isbn %></h4>
+          </div>
+          <hr>
+          <p><%= book.comment %></p>
+
+        <div class="book-actions">
+          <button class="edit-entry" data-id="<%= book.isbn %>">Edit</button>
+          <button class="delete-entry" data-id="<%= book.isbn %>">Delete</button>
         </div>
-        <!-- <hr> -->
-        <div>
-          <h4>Rating: <%= book.rating %>/10</h4>
-          <h4>Date: <%= book.date.toLocaleDateString('en-GB') %></h4>
-          <h4>ISBN: <%= book.isbn %></h4>
-        </div>
-        <hr>
-        <p><%= book.comment %></p>
       </div>
     <% }); %>
 

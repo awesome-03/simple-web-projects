@@ -88,6 +88,17 @@ app.post("/add", async (req, res) => {
   }
 });
 
+app.post("/delete", express.json(), async (req, res) => {
+  try {
+    await db.query("DELETE FROM entries WHERE isbn = $1", [req.body.isbn]);
+    res.sendStatus(200);
+  } catch (err) {
+    console.error("Delete failed:", err);
+    res.sendStatus(500);
+  }
+});
+
+
 app.listen(port, () => {
   console.log("Server running on http://localhost:" + port);
 });

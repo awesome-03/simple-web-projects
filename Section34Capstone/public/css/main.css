@@ -71,15 +71,71 @@ h1 {
 
 #book-entry-section {
   flex: 1 0 auto;
-  width: 800px;
+  max-width: 800px;
+  width: 100%;
   margin: 0 auto;
 }
 
+/* ----------------- */
 .book-entry {
-  width: 800px;
+  max-width: 800px;
+  width: 100%;
   margin: 2rem 0px;
-  overflow: hidden;
+
+  position: relative;
+  transition: all 0.3s ease;
 }
+
+.book-actions {
+  max-height: 0;
+  opacity: 0;
+  transition: all 0.3s ease;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+  gap: 10px;
+}
+
+.book-entry:hover .book-actions {
+  max-height: 100px;
+  opacity: 1;
+}
+
+.book-actions button {
+  margin-top: 10px;
+  padding: 6px 12px;
+  font-family: inherit;
+  font-size: 13pt;
+  font-weight: 600;
+  border-radius: 6px;
+  
+  background-color: light-dark(white, 	rgb(1, 2, 3));
+  
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.edit-entry {
+  border: 2px solid rgb(61, 125, 255);
+  color: rgb(61, 125, 255);
+}
+
+.delete-entry {
+  border: 2px solid rgb(212, 47, 47);
+  color: rgb(212, 47, 47);
+}
+
+.edit-entry:hover {
+  background-color: rgb(61, 125, 255);
+  color: white;
+}
+
+.delete-entry:hover {
+  background-color: rgb(212, 47, 47);
+  color: white;
+}
+
+/* ----------------- */
 
 .book-entry img {
   float: left;
@@ -124,7 +180,8 @@ h1 {
 }
 
 #add-btn {
-  width: 800px;
+  max-width: 800px;
+  width: 100%;
   margin: 1rem 0 2rem 0;
   padding: 5px 0 10px 0;
   font-size: 36pt;
@@ -148,7 +205,8 @@ h1 {
 /* FORM STYLES: */
 
 #new-book-form {
-  width: 800px;
+  max-width: 800px;
+  width: 100%;
   border: 2px solid rgb(61, 125, 255);
   border-radius: 8px;
   padding: 1rem;

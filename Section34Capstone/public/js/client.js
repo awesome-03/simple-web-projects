@@ -179,4 +179,35 @@ $addBtn.on("click", function () {
   });
 });
 
+// Detect Edit button click
+$(document).on("click", ".edit-entry", function () {
+  const isbn = $(this).data("id");
+  console.log("Edit clicked for ISBN:", isbn);
+  // TODO: Trigger edit flow (open a form with prefilled values)
+});
+
+// Detect Delete button click
+$(document).on("click", ".delete-entry", async function () {
+  const isbn = $(this).data("id");
+
+  try {
+    const response = await fetch("/delete", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ isbn })
+    });
+
+    if (response.ok) {
+      $(this).closest(".book-entry").remove();
+    } else {
+      console.error("Delete failed");
+    }
+  } catch (error) {
+    console.error("Error deleting entry:", error);
+  }
+});
+
+
 updateSortOrderImage(); // Initial update of the sort arrow
